@@ -1,3 +1,5 @@
 [submodule "trakset"]
 	path = trakset
 	url = git@github.com:millerthegorilla/trakset.git
+	branch = main
+	update = rebase
