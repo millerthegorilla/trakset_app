@@ -22,3 +22,4 @@ django-redis==6.0.0  # https://github.com/jazzband/django-redis
 django-qr-code==4.2.0 # https://github.com/dprog-philippe-docourt/django-qr-code
 #django-link-shortener==1.0.0 # https://pypi.org/project/django-link-shortener/
 django-link-shortener@git+https://github.com/millerthegorilla/django-link-shortener.git@patch-1
+django-soft-delete==1.0.19 # https://github.com/san4ezy/django_softdelete
