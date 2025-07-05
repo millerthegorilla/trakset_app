@@ -32,11 +32,9 @@
       <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
             rel="stylesheet" />
       <link href="{% static 'css/project.css' %}" rel="stylesheet" />
-      <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-2.3.2/b-3.2.3/date-1.5.5/fh-4.0.3/r-3.0.4/sc-2.4.3/sb-1.8.2/datatables.min.css"
-            rel="stylesheet"
-            integrity="sha384-KMoQCeiV+3SxpbpUGwziGzjrTVNt978NERKfvI6GtjR4SyJqIeodiIlSzOoBvO/b"
-            crossorigin="anonymous" />
     {% endblock css %}
+    {% block extra_css %}
+    {% endblock extra_css %}
     <!-- Le javascript
     ================================================== -->
     {# Placed at the top of the document so pages load faster with defer #}
@@ -89,10 +87,10 @@
                 <li class="nav-item active">
                   <a class="nav-link link-light" href="{% url 'home' %}">Home <span class="visually-hidden">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link link-light" href="{% url 'about' %}">About</a>
-                </li>
                 {% if request.user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link link-light" href="{% url 'about' %}">About</a>
+                  </li>
                   <li class="nav-item">
                     <a class="nav-link link-light"
                        href="{% url 'users:detail' request.user.username %}">{% translate "My Profile" %}</a>
@@ -117,15 +115,19 @@
                        href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
                   </li>
                 {% endif %}
-                {% if request.user.is_authenticated and request.user.is_staff %}
-                  <li class="nav-item">
-                    <a class="nav-link link-light" href="{% url 'admin:index' %}">{% translate "Admin" %}</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link link-light"
-                       href="{% url 'trakset:asset_transfer_history' %}">{% translate "Search" %}</a>
-                  </li>
-                {% endif %}
+                <div class="d-flex ms-5">
+                  {% if request.user.is_authenticated and request.user.is_staff %}
+                    <li class="nav-item">
+                      <a class="nav-link link-light"
+                         href="{% url 'trakset:asset_transfer_history' %}">{% translate "Search" %}</a>
+                    </li>
+                  {% endif %}
+                  {% if request.user.is_authenticated and request.user.is_superuser %}
+                    <li class="nav-item">
+                      <a class="nav-link link-light" href="{% url 'admin:index' %}">{% translate "Admin" %}</a>
+                    </li>
+                  {% endif %}
+                </div>
               </ul>
             </div>
           </div>
