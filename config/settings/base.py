@@ -68,6 +68,7 @@ DJANGO_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # "django.contrib.humanize", # Handy template tags
+    "baton",  # prettifies Admin interface
     "django.contrib.admin",
     "django.forms",
 ]
@@ -86,6 +87,7 @@ LOCAL_APPS = [
     "trakset",
     "qr_code",
     "shortener",
+    "baton.autodiscover",  # Must be the last app
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -191,6 +193,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "trakset_app.users.context_processors.allauth_settings",
                 "trakset.context_processors.transfer_timeout",
+                "trakset.context_processors.app_user",
             ],
         },
     },
@@ -328,3 +331,13 @@ SOCIALACCOUNT_FORMS = {"signup": "trakset_app.users.forms.UserSocialSignupForm"}
 # ------------------------------------------------------------------------------
 # Transfer timeout in hours
 TRANSFER_TIMEOUT = 3
+# Name of app user ie business that owns the assets
+# and employs the users of this app
+APP_USER = "Mind Jersey"
+# baton configuration (Prettifies the admin)
+BATON = {
+    "SITE_HEADER": "Mind Jersey Assets",
+    "SITE_TITLE": "Trakset Admin",
+    "INDEX_TITLE": "Site Administration Dashboard",
+    "SUPPORT_HREF": "mailto:jamesstewartmiller@gmail.com",
+}
