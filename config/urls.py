@@ -1,6 +1,7 @@
-from baton.autodiscover import admin
 from django.conf import settings
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
+from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include
 from django.urls import path
@@ -16,7 +17,6 @@ urlpatterns = [
     ),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
-    path("baton/", include("baton.urls")),
     # User management
     path("users/", include("trakset_app.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
@@ -26,6 +26,11 @@ urlpatterns = [
     # Media files
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]
+
+
+urlpatterns += [path("i18n/", include("django.conf.urls.i18n"))]
+urlpatterns += i18n_patterns(path("admin/", admin.site.urls))
+
 if settings.DEBUG:
     # Static file serving when using Gunicorn + Uvicorn for local web socket development
     urlpatterns += staticfiles_urlpatterns()

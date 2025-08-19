@@ -115,19 +115,16 @@
                        href="{% url 'account_login' %}">{% translate "Sign In" %}</a>
                   </li>
                 {% endif %}
-                <div class="d-flex ms-5">
-                  {% if request.user.is_authenticated and request.user.is_staff %}
-                    <li class="nav-item">
-                      <a class="nav-link link-light"
-                         href="{% url 'trakset:asset_transfer_history' %}">{% translate "Search" %}</a>
-                    </li>
-                  {% endif %}
-                  {% if request.user.is_authenticated and request.user.is_superuser %}
-                    <li class="nav-item">
-                      <a class="nav-link link-light" href="{% url 'admin:index' %}">{% translate "Admin" %}</a>
-                    </li>
-                  {% endif %}
-                </div>
+                {% if request.user.is_authenticated and request.user.is_staff %}
+                  <li class="nav-item">
+                    <a class="nav-link link-light" href="{% url 'trakset:asset_search' %}">{% translate "Search" %}</a>
+                  </li>
+                {% endif %}
+                {% if request.user.is_authenticated and request.user.is_superuser %}
+                  <li class="nav-item">
+                    <a class="nav-link link-light" href="{% url 'admin:index' %}">{% translate "Admin" %}</a>
+                  </li>
+                {% endif %}
               </ul>
             </div>
           </div>
