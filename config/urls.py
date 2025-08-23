@@ -15,8 +15,6 @@ urlpatterns = [
         TemplateView.as_view(template_name="pages/about.html"),
         name="about",
     ),
-    # Django Admin, use {% url 'admin:index' %}
-    path(settings.ADMIN_URL, admin.site.urls),
     # User management
     path("users/", include("trakset_app.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
@@ -27,9 +25,9 @@ urlpatterns = [
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]
 
-
 urlpatterns += [path("i18n/", include("django.conf.urls.i18n"))]
 urlpatterns += i18n_patterns(path("admin/", admin.site.urls))
+# Django Admin, use {% url 'admin:index' %}
 
 if settings.DEBUG:
     # Static file serving when using Gunicorn + Uvicorn for local web socket development

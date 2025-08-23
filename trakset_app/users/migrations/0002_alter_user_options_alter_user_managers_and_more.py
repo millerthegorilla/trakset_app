@@ -8,6 +8,10 @@ class Migration(migrations.Migration):
     dependencies = [
         ('users', '0001_initial'),
     ]
+    
+    run_before = [
+        ('trakset', '0011_assettransfer_deleted_at_assettransfer_restored_at_and_more'),
+    ]
 
     operations = [
         migrations.AlterModelOptions(
