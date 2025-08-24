@@ -69,11 +69,6 @@ class UserAdminCreationForm(admin_forms.AdminUserCreationForm):
             raise ValidationError(_("This username has already been taken."))
         return username
 
-    def save(self):
-        user = super().save(commit=False)
-        user.save()
-        return user
-
     class Meta(admin_forms.UserCreationForm.Meta):  # type: ignore[name-defined]
         model = User
         error_messages = {
