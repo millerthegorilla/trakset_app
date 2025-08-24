@@ -347,7 +347,7 @@ JAZZMIN_SETTINGS = {
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_brand": "Mind Assets App",
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": "logo.png",
+    "site_logo": "images/logo.png",
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
     "login_logo": None,
     # Logo to use for login form in dark themes (defaults to login_logo)
@@ -355,7 +355,7 @@ JAZZMIN_SETTINGS = {
     # CSS classes that are applied to the logo above
     "site_logo_classes": "img-circle",
     # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
-    "site_icon": None,
+    "site_icon": "images/favicons/fav-icon.webp",
     # Welcome text on the login screen
     "welcome_sign": "Welcome to the Mind Asset App",
     # Copyright on the footer
