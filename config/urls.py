@@ -8,14 +8,16 @@ from django.urls import path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 
-urlpatterns = [
+urlpatterns = [path("i18n/", include("django.conf.urls.i18n"))]
+urlpatterns += i18n_patterns(path(settings.ADMIN_URL, admin.site.urls))
+
+urlpatterns += [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
     path(
         "about/",
         TemplateView.as_view(template_name="pages/about.html"),
         name="about",
     ),
-    path(settings.ADMIN_URL, admin.site.urls),
     # User management
     path("users/", include("trakset_app.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
@@ -26,8 +28,6 @@ urlpatterns = [
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]
 
-urlpatterns += [path("i18n/", include("django.conf.urls.i18n"))]
-urlpatterns += i18n_patterns(path(settings.ADMIN_URL, admin.site.urls))
 # Django Admin, use {% url 'admin:index' %}
 
 if settings.DEBUG:
