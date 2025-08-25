@@ -275,3 +275,6 @@ trakset_app/media/
 .ipython/
 .env
 .envs/*
+
+# precommit.yml
+.pre-commit-config.yaml

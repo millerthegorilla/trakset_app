@@ -15,6 +15,7 @@ urlpatterns = [
         TemplateView.as_view(template_name="pages/about.html"),
         name="about",
     ),
+    path(settings.ADMIN_URL, admin.site.urls),
     # User management
     path("users/", include("trakset_app.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
@@ -26,7 +27,7 @@ urlpatterns = [
 ]
 
 urlpatterns += [path("i18n/", include("django.conf.urls.i18n"))]
-urlpatterns += i18n_patterns(path("admin/", admin.site.urls))
+urlpatterns += i18n_patterns(path(settings.ADMIN_URL, admin.site.urls))
 # Django Admin, use {% url 'admin:index' %}
 
 if settings.DEBUG:
