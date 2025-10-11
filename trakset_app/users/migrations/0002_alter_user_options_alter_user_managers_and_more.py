@@ -9,10 +9,11 @@ class Migration(migrations.Migration):
         ('users', '0001_initial'),
     ]
     
-    run_before = [
-        ('trakset', '0011_assettransfer_deleted_at_assettransfer_restored_at_and_more'),
-    ]
-    
+#    run_before = [
+#        ('trakset', '0011_assettransfer_deleted_at_assettransfer_restored_at_and_more'),
+#    ]
+# solve the issue with https://stackoverflow.com/a/48476148   and remember to rebuild before migration.
+
     operations = [
         migrations.AlterModelOptions(
             name='user',
