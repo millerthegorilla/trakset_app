@@ -22,7 +22,7 @@ class UserAdmin(auth_admin.UserAdmin):
 
     fieldsets = (
         (None, {"fields": ("username", "password")}),
-        (_("Personal info"), {"fields": ("email",)}),
+        (_("Personal info"), {"fields": ("email", "phone_number")}),
         (
             _("Permissions"),
             {
